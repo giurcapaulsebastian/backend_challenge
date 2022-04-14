@@ -19,7 +19,15 @@ class Nutrition(models.Model):
         ('g', 'gram'),
         ('Kcal', 'kcal'),
     ]
-    name = models.CharField(max_length=100)
+    name_choices = [
+        ('Protein', 'Protein'),
+        ('Carbohydrate', 'Carbohydrate'),
+        ('Fat', 'Fat'),
+        ('Sugar', 'Sugar'),
+        ('Fiber', 'Fiber'),
+        ('Energetic Value', 'Energetic Value'),
+    ]
+    name = models.CharField(max_length=100, choices=name_choices)
     unit = models.CharField(max_length=5, choices=unit_choices)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     value = models.DecimalField(default=0.00,max_digits=7,decimal_places=2)

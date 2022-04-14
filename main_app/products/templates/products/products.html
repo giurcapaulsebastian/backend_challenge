@@ -1,0 +1,37 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+
+<div class="table-responsive">
+    <table class="table table-bg">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Nutrition</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for product in products %}
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.status}}</td>
+                <td>
+                    {% for nutrition in nutritions %}
+                        {% if nutrition.product.id == product.id %}
+                            <p>{{nutrition.name}} : {{nutrition.value}} / {{ nutrition.unit }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-secondary" href="{% url 'update_product' product.id %}">Update</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                </td>
+            </tr>    
+        {% endfor %}
+        
+    </table>
+</div>
+
+{% endblock %}
