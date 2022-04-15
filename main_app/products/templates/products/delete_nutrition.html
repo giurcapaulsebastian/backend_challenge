@@ -1,0 +1,13 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+
+<p>Do you really want to delete "{{nutrition}}" with {{nutrition.value}} / {{nutrition.unit}} and PRODUCT ID : {{nutrition.product.id}}</p>
+
+<form action="{% url 'delete_nutrition' nutrition.id %}" method="POST">
+    {% csrf_token %}
+    <a href="{% url 'nutritions' %}">Cancel</a>
+    <input type="submit" name="Confirm">
+</form>
+
+{% endblock %}

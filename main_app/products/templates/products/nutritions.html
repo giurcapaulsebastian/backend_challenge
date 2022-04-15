@@ -2,6 +2,30 @@
 
 {% block content %}
 
-<h6>{{nutrition.name : nutrition.value}}</h6>
+<div class="table-responsive">
+    <table class="table table-bg">
+        <tr>
+            <th>Name</th>
+            <th>Unit</th>
+            <th>Product ID</th>
+            <th>Value</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for nutrition in nutritions %}
+            <tr>
+                <td>{{nutrition.name}}</td>
+                <td>{{nutrition.unit}}</td>
+                <td>{{nutrition.product.id}}</td>
+                <td>{{nutrition.value}}</td>
+                <td>
+                    <a class="btn btn-sm btn-secondary" href="{% url 'update_nutrition' nutrition.id %}">Update</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'delete_nutrition' nutrition.id %}">Delete</a>
+                </td>
+            </tr>    
+        {% endfor %}
+        
+    </table>
+</div>
 
 {% endblock %}

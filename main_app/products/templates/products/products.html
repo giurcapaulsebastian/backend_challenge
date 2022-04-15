@@ -2,6 +2,13 @@
 
 {% block content %}
 
+<div class="card card-body">
+    <form method="get">
+        {{myFilter.form}}
+        <button class="btn btn-primary" type="submit">Filter</button>
+    </form>
+</div>
+
 <div class="table-responsive">
     <table class="table table-bg">
         <tr>
